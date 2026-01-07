@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mobile Order Details</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#FF8A65", // Pastel Orange/Coral for a modern vibrant look
+                        secondary: "#FFD180", // Lighter Orange accent
+                        "background-light": "#FAFAFA", // Very light grey/white for cleanness
+                        "background-dark": "#121212",
+                        "surface-light": "#FFFFFF",
+                        "surface-dark": "#1E1E1E",
+                        "text-main": "#2D3436",
+                        "text-muted": "#636E72",
+                    },
+                    fontFamily: {
+                        sans: ["Sora", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "1rem",
+                        'xl': "1.25rem",
+                        '2xl': "1.5rem",
+                        '3xl': "2rem"
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px -10px rgba(0,0,0,0.08)',
+                        'glow': '0 0 20px rgba(255, 138, 101, 0.4)'
+                    }
+                },
+            },
+        };
+    </script>
+<style>
+        body { font-family: 'Sora', sans-serif; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .material-symbols-outlined.filled { font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-main dark:text-white transition-colors duration-300 min-h-screen flex flex-col">
+<header class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-gray-100 dark:border-gray-800">
+<div class="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row items-center justify-between gap-4">
+<div class="flex items-center gap-3 w-full md:w-auto">
+<div class="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">local_cafe</span>
+</div>
+<div class="flex flex-col">
+<span class="text-xs text-text-muted font-medium">Ordering for</span>
+<button class="flex items-center gap-1 font-bold text-lg hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-primary filled text-[20px]">location_on</span>
+                        Vancouver, BC
+                        <span class="material-symbols-outlined text-sm text-text-muted">expand_more</span>
+</button>
+</div>
+</div>
+<div class="w-full md:max-w-md relative group">
+<div class="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-gray-400 group-focus-within:text-primary transition-colors">search</span>
+</div>
+<input class="w-full pl-12 pr-12 py-3.5 bg-white dark:bg-surface-dark border-none rounded-2xl shadow-sm ring-1 ring-gray-100 dark:ring-gray-800 focus:ring-2 focus:ring-primary/50 text-sm transition-all" placeholder="Search coffee, drinks..." type="text"/>
+<div class="absolute inset-y-0 right-2 flex items-center">
+<button class="p-2 bg-primary text-white rounded-xl hover:bg-opacity-90 transition-all shadow-glow flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+</button>
+</div>
+</div>
+<div class="flex items-center gap-4 hidden md:flex">
+<button class="relative p-3 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+<span class="material-symbols-outlined text-text-main dark:text-white">notifications</span>
+<span class="absolute top-3 right-3 h-2 w-2 bg-red-500 rounded-full border border-white dark:border-surface-dark"></span>
+</button>
+<div class="h-12 w-12 rounded-full ring-2 ring-white dark:ring-gray-700 shadow-md overflow-hidden cursor-pointer hover:ring-primary transition-all">
+<img alt="Profile" class="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXzQpYar4el8zsD6y3oN0iHWd07jQPMCt-8JVTZ5X0YTWwr7dKo_ZdrKdW9_kfyOw56oJmlnpSUzG0qtakRwZL2BYOkwS85eMveGIkhIuTLHDuwixT9ufoaf2aF8PV9jP72HuzXbc-2fiGBv-r0O8OIIbiyAyd36-6_YYACwH5nk2TxEiVs4_NgAg5WN7HGZ2wycTI-Qw1A1czBK5viUgCpDsv6-sey7-khu5Yh6mhFBIGipB1M6f1acGM6As1ZOG1r08aQHMziC8"/>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-4 md:px-6 py-8 flex-grow w-full">
+<div class="max-w-2xl mx-auto">
+<div class="flex items-center gap-4 mb-8">
+<button class="p-3 bg-white dark:bg-surface-dark border border-gray-100 dark:border-gray-800 rounded-full hover:bg-primary hover:text-white dark:hover:bg-primary transition-all shadow-sm group">
+<span class="material-symbols-outlined group-hover:-translate-x-0.5 transition-transform">arrow_back</span>
+</button>
+<h1 class="text-2xl font-bold text-text-main dark:text-white">Order Details</h1>
+<div class="ml-auto bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-bold">
+                    3 Items
+                </div>
+</div>
+<div class="flex flex-col gap-6 mb-10">
+<div class="bg-surface-light dark:bg-surface-dark p-4 rounded-3xl shadow-soft border border-gray-100 dark:border-gray-800 flex gap-5 items-center group transition-all hover:border-primary/30 relative overflow-hidden">
+<div class="absolute right-0 top-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="text-gray-300 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+<div class="w-24 h-24 rounded-2xl overflow-hidden flex-shrink-0 shadow-sm">
+<img alt="Cappuccino" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbC5i7Alhsyddspu2aE3ZgJv2mgU1cyBMO9EurvfFn1nJ1EYy5v6tzuKiUvNbs4rME1Qtd-kQFaUv-eiopt4sDtwp-VfXWuRbZnBwjkEx5U4jNqAsHmDOkP1YCls6XMMfDVo8THEI1TDRjhqiRHVDg2cebKRmrzsn4RZYhD_gmvNUqgkRA7UFlKT9ZzukL0yx2SHK_PG3oCeMGH6GYC6m3Ssht8dog_w-0-NWU8Gh9nSP-Z7DXCUCe_gmDrwQJeICOGOsyVCIwYhQ"/>
+</div>
+<div class="flex-1 flex flex-col justify-between self-stretch py-1 gap-1">
+<div>
+<h3 class="font-bold text-lg text-text-main dark:text-white">Cappuccino</h3>
+<p class="text-xs text-text-muted">with Oat Milk</p>
+<p class="text-xs text-text-muted mt-0.5">Size M</p>
+</div>
+<div class="font-bold text-lg text-primary">$ 4.53</div>
+</div>
+<div class="flex flex-col items-end justify-end self-stretch py-1">
+<div class="flex items-center gap-3 bg-gray-50 dark:bg-gray-800 rounded-xl p-1.5 border border-gray-100 dark:border-gray-700">
+<button class="w-7 h-7 rounded-lg flex items-center justify-center hover:bg-white dark:hover:bg-gray-700 shadow-sm transition-all text-text-main dark:text-white">
+<span class="material-symbols-outlined text-[16px]">remove</span>
+</button>
+<span class="font-bold text-sm text-text-main dark:text-white w-3 text-center">1</span>
+<button class="w-7 h-7 rounded-lg flex items-center justify-center bg-white dark:bg-surface-dark shadow-sm transition-all text-primary">
+<span class="material-symbols-outlined text-[16px] font-bold">add</span>
+</button>
+</div>
+</div>
+</div>
+<div class="bg-surface-light dark:bg-surface-dark p-4 rounded-3xl shadow-soft border border-gray-100 dark:border-gray-800 flex gap-5 items-center group transition-all hover:border-primary/30 relative overflow-hidden">
+<div class="absolute right-0 top-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="text-gray-300 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+<div class="w-24 h-24 rounded-2xl overflow-hidden flex-shrink-0 shadow-sm">
+<img alt="Latte" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6CT8PB13yXHg3fCJ2DFUz_DIKTcKUjobGxYvr2b_6hoVTQPrAMsupufS52JVoicW3ENtH2Ow14GCjs7-AmEvBKAw1QFFyEVQqV1oBbnbKuPq_TvzK02kTY9BaN-mkC9tJgGwAu2UE_j1TDQiUBoJ0P8gEcjeMUCm0DoqMKK4I2LPfDXFVA0emHE88fuc1VWjtNVufeS09DIG4e1ix_idijHffmkiafJtsA3LCEnEriqlTmtIMymP5V_Mc1jJWi-RZ1u6BfSSCXws"/>
+</div>
+<div class="flex-1 flex flex-col justify-between self-stretch py-1 gap-1">
+<div>
+<h3 class="font-bold text-lg text-text-main dark:text-white">Latte</h3>
+<p class="text-xs text-text-muted">Vanilla Foam</p>
+<p class="text-xs text-text-muted mt-0.5">Size S</p>
+</div>
+<div class="font-bold text-lg text-primary">$ 4.20</div>
+</div>
+<div class="flex flex-col items-end justify-end self-stretch py-1">
+<div class="flex items-center gap-3 bg-gray-50 dark:bg-gray-800 rounded-xl p-1.5 border border-gray-100 dark:border-gray-700">
+<button class="w-7 h-7 rounded-lg flex items-center justify-center hover:bg-white dark:hover:bg-gray-700 shadow-sm transition-all text-text-main dark:text-white">
+<span class="material-symbols-outlined text-[16px]">remove</span>
+</button>
+<span class="font-bold text-sm text-text-main dark:text-white w-3 text-center">2</span>
+<button class="w-7 h-7 rounded-lg flex items-center justify-center bg-white dark:bg-surface-dark shadow-sm transition-all text-primary">
+<span class="material-symbols-outlined text-[16px] font-bold">add</span>
+</button>
+</div>
+</div>
+</div>
+<div class="bg-surface-light dark:bg-surface-dark p-4 rounded-3xl shadow-soft border border-gray-100 dark:border-gray-800 flex gap-5 items-center group transition-all hover:border-primary/30 relative overflow-hidden">
+<div class="absolute right-0 top-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="text-gray-300 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+<div class="w-24 h-24 rounded-2xl overflow-hidden flex-shrink-0 shadow-sm">
+<img alt="Mocha" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuARMPF8y81u1Y96qMWT5417dbooY1Prpy--XFvsqw9L-ZmIDofKcWOQDeiubCfEU_GtvPHJnXFX3OV8B1SUecu6iVxRgoewk2424uEEval0QlhMmOohQuLWB4pyZQcze6ws26vQrkVpjAF3E_GEcb_-ziQ09y4ZU4mUXmcpgVJj6mmHZXHpF4ca5LR5T6bosL0WUUycBgIm-A9R8N5rab1PE3HjZqlFw9kbXoHvIHCm0MeAqGWRd90VldoxxkxI-YKH9wTa9JC3_gA"/>
+</div>
+<div class="flex-1 flex flex-col justify-between self-stretch py-1 gap-1">
+<div>
+<h3 class="font-bold text-lg text-text-main dark:text-white">Mocha</h3>
+<p class="text-xs text-text-muted">Dark Chocolate</p>
+<p class="text-xs text-text-muted mt-0.5">Size L</p>
+</div>
+<div class="font-bold text-lg text-primary">$ 4.80</div>
+</div>
+<div class="flex flex-col items-end justify-end self-stretch py-1">
+<div class="flex items-center gap-3 bg-gray-50 dark:bg-gray-800 rounded-xl p-1.5 border border-gray-100 dark:border-gray-700">
+<button class="w-7 h-7 rounded-lg flex items-center justify-center hover:bg-white dark:hover:bg-gray-700 shadow-sm transition-all text-text-main dark:text-white">
+<span class="material-symbols-outlined text-[16px]">remove</span>
+</button>
+<span class="font-bold text-sm text-text-main dark:text-white w-3 text-center">1</span>
+<button class="w-7 h-7 rounded-lg flex items-center justify-center bg-white dark:bg-surface-dark shadow-sm transition-all text-primary">
+<span class="material-symbols-outlined text-[16px] font-bold">add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-surface-light dark:bg-surface-dark p-6 md:p-8 rounded-[2rem] shadow-soft border border-gray-100 dark:border-gray-800 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-bl-full pointer-events-none"></div>
+<h2 class="text-lg font-bold text-text-main dark:text-white mb-6">Payment Summary</h2>
+<div class="flex gap-3 mb-8 relative z-10">
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-4 top-3.5 text-gray-400 text-[20px]">local_offer</span>
+<input class="w-full pl-11 pr-4 py-3 bg-gray-50 dark:bg-background-dark border-none rounded-2xl shadow-inner focus:ring-2 focus:ring-primary/50 text-sm transition-all" placeholder="Promo Code" type="text" value="COFFEE24"/>
+<span class="absolute right-3 top-3.5 text-green-500 material-symbols-outlined text-[18px]">check_circle</span>
+</div>
+<button class="bg-gray-900 dark:bg-white text-white dark:text-black font-bold px-6 rounded-2xl shadow-md hover:opacity-90 transition-all">Apply</button>
+</div>
+<div class="flex flex-col gap-4 mb-8 border-b border-gray-100 dark:border-gray-800 pb-8 relative z-10">
+<div class="flex justify-between text-sm items-center">
+<span class="text-text-muted">Subtotal</span>
+<span class="font-bold text-text-main dark:text-white text-base">$ 17.73</span>
+</div>
+<div class="flex justify-between text-sm items-center">
+<span class="text-text-muted">Delivery Fee</span>
+<div class="flex items-center gap-2">
+<span class="text-xs text-gray-400 line-through">$ 3.00</span>
+<span class="font-bold text-text-main dark:text-white text-base">$ 1.50</span>
+</div>
+</div>
+<div class="flex justify-between text-sm items-center">
+<span class="text-primary font-medium">Discount (20%)</span>
+<span class="font-bold text-primary text-base">- $ 3.54</span>
+</div>
+</div>
+<div class="flex justify-between items-center mb-8 relative z-10">
+<div class="flex flex-col">
+<span class="text-sm text-text-muted">Total Payment</span>
+<span class="text-3xl font-extrabold text-text-main dark:text-white tracking-tight">$ 15.69</span>
+</div>
+<div class="text-right">
+<span class="text-xs text-text-muted">Incl. Tax</span>
+</div>
+</div>
+<button class="w-full bg-primary text-white font-bold py-4 rounded-2xl shadow-lg shadow-primary/40 hover:bg-opacity-90 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative z-10 flex items-center justify-center gap-2 group">
+                    Proceed to Checkout
+                    <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+</main>
+<nav class="md:hidden fixed bottom-4 left-4 right-4 bg-white dark:bg-surface-dark py-4 px-8 flex justify-between items-center z-50 rounded-2xl shadow-2xl border border-gray-100 dark:border-gray-800">
+<button class="text-gray-400 hover:text-primary transition-colors flex flex-col items-center gap-1">
+<span class="material-symbols-outlined">home</span>
+</button>
+<button class="text-gray-400 hover:text-primary transition-colors flex flex-col items-center">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+<button class="text-primary hover:text-primary transition-colors flex flex-col items-center relative">
+<span class="material-symbols-outlined filled">shopping_bag</span>
+<span class="absolute -top-1 -right-1 h-3 w-3 bg-red-500 rounded-full border border-white dark:border-surface-dark"></span>
+</button>
+<button class="text-gray-400 hover:text-primary transition-colors flex flex-col items-center">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</nav>
+<script>
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+    </script>
+
+</body></html>
